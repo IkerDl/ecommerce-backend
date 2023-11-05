@@ -12,6 +12,7 @@ marshmallow-sqlalchemy = "*"
 werkzeug = "*"
 flask-cors = "*"
 flask-login = "*"
+gunicorn = "*"
 
 [dev-packages]
 
