@@ -29,7 +29,7 @@ class Product(db.Model):
     products_category_id = db.Column(db.Integer)
     product_carts = relationship('Cart', backref='product')
 
-    def __init__(self,products_name, products_price, products_description, products_image):
+    def __init__(self,products_name, products_price, products_stock, products_description, products_image):
         self.products_name = products_name
         self.products_price = products_price
         self.products_stock = products_stock
@@ -121,10 +121,11 @@ def add_product():
     post_data = request.get_json()
     products_name = post_data.get('products_name')
     products_price = post_data.get('products_price')
+    products_stock = post_data.get('products_stock')
     products_description = post_data.get('products_description')
     products_image = post_data.get('products_image')
-
-    new_record = Product(products_name, products_price, products_description,products_image)
+    
+    new_record = Product(products_name, products_price, products_stock, products_description,products_image)
     db.session.add(new_record)
     db.session.commit()
 
