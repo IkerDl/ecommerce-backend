@@ -10,7 +10,9 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 app = Flask(__name__)
 CORS(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:,.password21,.@localhost/ecommerce_data_base'
+#app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:,.password21,.@localhost/ecommerce_data_base'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://x918gieoi2e5od4l:wooxaoqqcft8oenu@eyvqcfxf5reja3nv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/zkts0sqolya2irfl'
+
 app.config['SECRET_KEY'] = 'secret_password31'
 
 db = SQLAlchemy(app)
@@ -19,11 +21,11 @@ ma = Marshmallow(app)
 class Product(db.Model):
     __tablename__ = "products"
     products_id = db.Column(db.Integer, primary_key=True, nullable=False)
-    products_name = db.Column(db.String, nullable=False, unique=True)
+    products_name = db.Column(db.String(100), nullable=False, unique=True)
     products_price = db.Column(db.Integer)
     products_stock = db.Column(db.Integer, default=0)
-    products_description = db.Column(db.String)
-    products_image = db.Column(db.String)
+    products_description = db.Column(db.String(500))
+    products_image = db.Column(db.String(100))
     products_category_id = db.Column(db.Integer)
     product_carts = relationship('Cart', backref='product')
 
@@ -44,16 +46,16 @@ products_schema = ProductSchema(many=True)
 class User(db.Model, UserMixin):
     __tablename__ = "users"
     users_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
-    users_firstname = db.Column(db.String, nullable=False)
-    users_lastname = db.Column(db.String, nullable = False)
-    users_email = db.Column(db.String, nullable=False, unique=True)
-    users_password = db.Column(db.String, nullable=False)
+    users_firstname = db.Column(db.String(100), nullable=False)
+    users_lastname = db.Column(db.String(100), nullable = False)
+    users_email = db.Column(db.String(100), nullable=False, unique=True)
+    users_password = db.Column(db.String(100), nullable=False)
     users_phone = db.Column(db.Integer, unique=True)
-    users_address = db.Column(db.String)
-    users_address2 = db.Column(db.String)
-    users_country = db.Column(db.String)
+    users_address = db.Column(db.String(100))
+    users_address2 = db.Column(db.String(100))
+    users_country = db.Column(db.String(100))
     users_zip = db.Column(db.Integer)
-    users_city = db.Column(db.String)
+    users_city = db.Column(db.String(100))
 
     def __init__(self,users_firstname,users_lastname,users_email,users_password):
         self.users_firstname = users_firstname
