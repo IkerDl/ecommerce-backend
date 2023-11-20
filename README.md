@@ -1,7 +1,7 @@
 # Steps to add dates for DB
 Use the product/add endpoint to add data to the database.
 
-# Establecer la url de nuestra DB 
+# Set the URL for our Database
 In my case, I used Jaws DB, on line 14 I defined the app.config to that URL to be able to use the endpoints appropriately.
 If the usage will be at the localhost level, you must use the app.config from the upper line (line 13) and comment (#) line 14.
 Additionally, we must replace that URL in the front-end, changing it to our local database URL.
@@ -10,7 +10,7 @@ The easiest way to replace all our URLs conveniently is to use the search featur
 
 Previous Heroku route: https://ecommerce-back-d6168f94499c.herokuapp.com/
 
-# Ejecutar el backend a nivel local
+# Run the backend locally
 We open the terminal and navigate to the backend directory.
 We run pipenv install, pipenv shell, and if everything is correct, we execute python app.py. 
 
